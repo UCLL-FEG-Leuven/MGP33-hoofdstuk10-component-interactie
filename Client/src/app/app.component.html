@@ -1,10 +1,11 @@
-@for (timeZone of timeZones; track timeZone) {
-    <app-klok [timeZone]="timeZone" (removed)="removeChild($event)"></app-klok>
-}
+<h1>Wereldklok</h1>
+<nav>
+  <ul>
+    <li><a routerLink="/klokken">Klokken</a></li>
+    <li><a routerLink="/over">Over</a></li>
+  </ul>
+</nav>
 
-<section>
-    <label for="newTimeZone">Nieuwe tijdszone</label>
-    <input type="text" id="newTimeZone" name="newTimeZone" 
-        [(ngModel)]="newTimeZone" />
-    <button (click)="addNewTimeZone()">Toevoegen</button>
-</section>
+<!-- Met deze tag geven we aan waar de 'klokken' en 'over' componenten 
+     hun content kunnen renderen-->
+<router-outlet></router-outlet>

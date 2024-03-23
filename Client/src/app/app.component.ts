@@ -1,39 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
-import { KlokComponent } from './klok/klok.component';
-import { FormsModule } from '@angular/forms';
+import { Component } from '@angular/core';
+import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterOutlet, KlokComponent],
+  imports: [RouterLink, RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent implements OnInit {
-  newTimeZone: string = 'Europe/Brussels';
-  timeZones: Array<string> = [];
-
-  async ngOnInit(): Promise<void> {
-    // TODO: via proxy.
-    let response = await fetch('http://localhost:3010/my-clocks');
-    if (response.ok) {
-      this.timeZones = await response.json();
-    }
-  }
-
-  addNewTimeZone() {
-    this.timeZones.push(this.newTimeZone);
-    this.newTimeZone = "";
-  }
-
-  removeChild(timeZone: string) {
-    this.timeZones = this.timeZones.filter(tz => tz != timeZone);
-  }
+export class AppComponent {
 }
-
-
-
-
-  // 'America/New_York', 'Europe/Brussels', 'Japan'
