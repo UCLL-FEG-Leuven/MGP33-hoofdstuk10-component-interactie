@@ -14,8 +14,7 @@ import { Klok } from '../klok';
   styleUrl: './klokken.component.css'
 })
 export class KlokkenComponent implements OnInit {
-  newTimeZone: string = 'Europe/Brussels';
-  timeZones: Array<string> = [];
+  klokken: Klok[] = [];
 
   @ViewChild("nieuweKlokDialog")
   nieuweKlokDialog: ElementRef<HTMLDialogElement> | undefined;
@@ -23,7 +22,7 @@ export class KlokkenComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     let response = await fetch('http://localhost:3010/my-clocks');
     if (response.ok) {
-      this.timeZones = await response.json();
+      this.klokken = await response.json();
     }
   }
 
@@ -32,11 +31,11 @@ export class KlokkenComponent implements OnInit {
   }
 
   voegNieuweKlokToe(nieuweKlok: Klok) {
-    this.timeZones.push(nieuweKlok.timeZone);
+    this.klokken.push(nieuweKlok);
     this.nieuweKlokDialog?.nativeElement.close();
   }
 
-  removeChild(timeZone: string) {
-    this.timeZones = this.timeZones.filter(tz => tz != timeZone);
+  removeChild(klok: Klok) {
+    this.klokken = this.klokken.filter(tz => klok.timeZone != klok.timeZone);
   }
 }

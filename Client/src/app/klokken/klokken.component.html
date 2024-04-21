@@ -1,5 +1,5 @@
-@for (timeZone of timeZones; track timeZone) {
-    <app-klok [timeZone]="timeZone" (removed)="removeChild($event)"></app-klok>
+@for (klok of klokken; track klok.timeZone) {
+    <app-klok [klok]="klok" (removed)="removeChild($event)"></app-klok>
 }
 
 <button (click)="toonNieuweKlokDialog()">Voeg nieuwe klok toe ...</button>

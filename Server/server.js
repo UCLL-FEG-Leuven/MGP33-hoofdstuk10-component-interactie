@@ -5,6 +5,8 @@ import { join } from "path";
 
 import __dirname from "./__dirname.js";
 
+import { Klok } from "./klok.js";
+
 const app = express();
 
 // De poort is niet meer hardgecodeerd: de de host van deze server kan zelf bepalen op welke poort het moet draaien.
@@ -19,7 +21,8 @@ app.use(cors());
 app.use(express.json());
 
 // REST/WEB API - start
-const myClocks = ['Europe/Brussels'];
+const myClocks = [new Klok('thuis', 'Europe/Brussels', 'nl-BE')];
+
 app.get('/my-clocks', function (req, res) {
   res.json(myClocks);
 })

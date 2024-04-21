@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { Klok } from '../klok';
 
 @Component({
   selector: 'app-klok',
@@ -9,12 +10,11 @@ import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angu
 })
 export class KlokComponent implements OnInit, OnDestroy {
   @Input()
-  timeZone: string  = "Europe/Brussels";
+  klok: Klok | undefined;
 
   @Output()
-  removed: EventEmitter<string> = new EventEmitter<string>(); 
+  removed: EventEmitter<Klok> = new EventEmitter<Klok>(); 
 
-  locale: string = "nl-BE";
   tijd: string | undefined;
   isNight: boolean = false;
 
@@ -23,12 +23,12 @@ export class KlokComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.intervalId = window.setInterval(() => {
       const huidigTijdstip = new Date();
-      this.tijd = huidigTijdstip.toLocaleString(this.locale, { timeZone: this.timeZone });
+      this.tijd = huidigTijdstip.toLocaleString(this.klok?.locale, { timeZone: this.klok?.timeZone });
 
       const hourIn24FormatInTimeZone = parseInt(
           huidigTijdstip.toLocaleTimeString(
             'nl-BE', 
-            { hour: '2-digit', hour12: false, timeZone: this.timeZone})
+            { hour: '2-digit', hour12: false, timeZone: this.klok?.timeZone})
         );
       this.isNight = hourIn24FormatInTimeZone >= 18 || hourIn24FormatInTimeZone <= 6;
     }, 1000);
@@ -39,10 +39,10 @@ export class KlokComponent implements OnInit, OnDestroy {
   }
 
   changeLocale(locale:string) {
-    this.locale = locale;
+    if (this.klok) this.klok.locale = locale;
   }
 
   remove() {
-    this.removed.emit(this.timeZone);
+    this.removed.emit(this.klok);
   }
 }

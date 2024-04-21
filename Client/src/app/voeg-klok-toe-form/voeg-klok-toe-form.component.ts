@@ -14,9 +14,11 @@ export class VoegKlokToeFormComponent {
   klokGekozen: EventEmitter<Klok> = new EventEmitter<Klok>(); 
 
   timeZones: string[] = Intl.supportedValuesOf('timeZone');
-  model: Klok = new Klok();
+  model: Klok = new Klok('thuis', 'Europe/Brussels', 'nl-BE');  
 
   onSubmit() {
-    this.klokGekozen.emit(this.model);
+    // Copy van de klok want deze wordt 'by reference' doorgegeven (en zo worden side effects vermeden).
+    let modelCopy = new Klok(this.model.name, this.model.timeZone, this.model.locale);
+    this.klokGekozen.emit(modelCopy);
   }
 }
