@@ -17,7 +17,7 @@ export class VoegKlokToeFormComponent {
   model: Klok = new Klok('thuis', 'Europe/Brussels', 'nl-BE');  
 
   onSubmit() {
-    // Copy van de klok want deze wordt 'by reference' doorgegeven (en zo worden side effects vermeden).
+    // Copy van de klok want deze wordt 'by reference' doorgegeven (zo worden side effects vermeden).
     let modelCopy = new Klok(this.model.name, this.model.timeZone, this.model.locale);
     this.klokGekozen.emit(modelCopy);
   }
