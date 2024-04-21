@@ -1,9 +1,9 @@
 {
   "name": "wereldklok",
-  "version": "0.0.0",
+  "version": "0.10.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --port 4210",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"

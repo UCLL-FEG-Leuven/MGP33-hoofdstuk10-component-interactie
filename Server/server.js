@@ -14,7 +14,7 @@ const port = process.env.PORT ? process.env.PORT : 3010;
 // De static files middleware registreren
 app.use("/", express.static(join(__dirname, 'public','browser')));
 
-// CORS is vereist omdat er tijdens ontwikkeling calls komen van een andere host:port (poort 4200) naar deze host:port (poort 3009)
+// CORS is vereist omdat er tijdens ontwikkeling calls komen van een andere host:port (poort 4200) naar deze host:port (poort 3010)
 app.use(cors());
 app.use(express.json());
 

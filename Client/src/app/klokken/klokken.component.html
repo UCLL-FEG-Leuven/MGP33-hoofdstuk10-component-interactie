@@ -2,9 +2,7 @@
     <app-klok [timeZone]="timeZone" (removed)="removeChild($event)"></app-klok>
 }
 
-<section>
-    <label for="newTimeZone">Nieuwe tijdszone</label>
-    <input type="text" id="newTimeZone" name="newTimeZone" 
-        [(ngModel)]="newTimeZone" />
-    <button (click)="addNewTimeZone()">Toevoegen</button>
-</section>
+<button (click)="toonNieuweKlokDialog()">Voeg nieuwe klok toe ...</button>
+<dialog #nieuweKlokDialog>
+    <app-voeg-klok-toe-form (klokGekozen)="voegNieuweKlokToe($event)"></app-voeg-klok-toe-form>
+</dialog>

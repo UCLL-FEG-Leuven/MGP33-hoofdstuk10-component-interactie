@@ -1,6 +1,6 @@
 {
   "name": "mgp33-hoofdstuk10-component-interactie",
-  "version": "0.0.1",
+  "version": "0.10.0",
   "description": "Hoofdstuk 10 - Component interactie: verder bouwen aan de wereldlklok applicatie van hoofdstuk 09",
   "main": "index.js",
   "scripts": {
