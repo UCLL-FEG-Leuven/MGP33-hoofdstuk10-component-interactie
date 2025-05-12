@@ -20,7 +20,8 @@ export class KlokkenComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     let response = await fetch('http://localhost:3010/my-clocks');
     if (response.ok) {
-      this.klokken = await response.json();
+      let klokkenLiteralsArray = await response.json();
+      this.klokken = klokkenLiteralsArray.map((o: any) => new Klok(o.name, o.timeZone, o.locale));
     }
   }
 
