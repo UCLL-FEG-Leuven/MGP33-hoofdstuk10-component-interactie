@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
-import { Klok } from '../klok';
+import { Component, EventEmitter, Input, signal, OnDestroy, OnInit, Output } from '@angular/core';
+import { Klok as KlokModel } from '../klok';
 
 @Component({
     selector: 'app-klok',
@@ -9,27 +9,27 @@ import { Klok } from '../klok';
 })
 export class Klok implements OnInit, OnDestroy {
   @Input()
-  klok: Klok | undefined;
+  klok: KlokModel | undefined;
 
   @Output()
-  removed: EventEmitter<Klok> = new EventEmitter<Klok>(); 
+  removed: EventEmitter<KlokModel> = new EventEmitter<KlokModel>(); 
 
-  tijd: string | undefined;
-  isNight: boolean = false;
+  tijd = signal("");
+  isNight = signal(false);
 
   intervalId: number | undefined;
 
   ngOnInit(): void {
     this.intervalId = window.setInterval(() => {
       const huidigTijdstip = new Date();
-      this.tijd = huidigTijdstip.toLocaleString(this.klok?.locale, { timeZone: this.klok?.timeZone });
+      this.tijd.set(huidigTijdstip.toLocaleString(this.klok?.locale, { timeZone: this.klok?.timeZone }));
 
       const hourIn24FormatInTimeZone = parseInt(
           huidigTijdstip.toLocaleTimeString(
             'nl-BE', 
             { hour: '2-digit', hour12: false, timeZone: this.klok?.timeZone})
         );
-      this.isNight = hourIn24FormatInTimeZone >= 18 || hourIn24FormatInTimeZone <= 6;
+      this.isNight.set(hourIn24FormatInTimeZone >= 18 || hourIn24FormatInTimeZone <= 6);
     }, 1000);
   }
 

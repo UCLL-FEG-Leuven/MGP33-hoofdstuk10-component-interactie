@@ -1,9 +1,9 @@
-.dark {
+.night {
     background-color: #000;
     color: #fff;
 }
 
-.light {
+.day {
     background-color: #fff;
     color: #000;
 }
