@@ -1,17 +1,16 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { KlokComponent } from '../klok/klok.component';
+
+import { Klok } from '../klok/klok';
 import { FormsModule } from '@angular/forms';
-import { VoegKlokToeFormComponent } from '../voeg-klok-toe-form/voeg-klok-toe-form.component';
-import { Klok } from '../klok';
+import { VoegKlokToeForm } from '../voeg-klok-toe-form/voeg-klok-toe-form';
 
 @Component({
     selector: 'app-klokken',
-    imports: [CommonModule, FormsModule, KlokComponent, VoegKlokToeFormComponent],
-    templateUrl: './klokken.component.html',
-    styleUrl: './klokken.component.css'
+    imports: [FormsModule, Klok, VoegKlokToeForm],
+    templateUrl: './klokken.html',
+    styleUrl: './klokken.css'
 })
-export class KlokkenComponent implements OnInit {
+export class Klokken implements OnInit {
   klokken: Klok[] = [];
 
   @ViewChild("nieuweKlokDialog")

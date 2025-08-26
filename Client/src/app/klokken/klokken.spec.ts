@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { KlokkenComponent } from './klokken.component';
+import { Klokken } from './klokken';
 
 describe('KlokkenComponent', () => {
-  let component: KlokkenComponent;
-  let fixture: ComponentFixture<KlokkenComponent>;
+  let component: Klokken;
+  let fixture: ComponentFixture<Klokken>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [KlokkenComponent]
+      imports: [Klokken]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(KlokkenComponent);
+    fixture = TestBed.createComponent(Klokken);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

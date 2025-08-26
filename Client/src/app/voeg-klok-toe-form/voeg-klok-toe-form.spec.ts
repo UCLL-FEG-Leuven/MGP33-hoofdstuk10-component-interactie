@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OverComponent } from './over.component';
+import { VoegKlokToeForm } from './voeg-klok-toe-form';
 
-describe('OverComponent', () => {
-  let component: OverComponent;
-  let fixture: ComponentFixture<OverComponent>;
+describe('VoegKlokToeFormComponent', () => {
+  let component: VoegKlokToeForm;
+  let fixture: ComponentFixture<VoegKlokToeForm>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [OverComponent]
+      imports: [VoegKlokToeForm]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(OverComponent);
+    fixture = TestBed.createComponent(VoegKlokToeForm);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

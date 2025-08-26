@@ -5,10 +5,10 @@ import { Klok } from '../klok';
 @Component({
     selector: 'app-voeg-klok-toe-form',
     imports: [FormsModule],
-    templateUrl: './voeg-klok-toe-form.component.html',
-    styleUrl: './voeg-klok-toe-form.component.css'
+    templateUrl: './voeg-klok-toe-form.html',
+    styleUrl: './voeg-klok-toe-form.css'
 })
-export class VoegKlokToeFormComponent {
+export class VoegKlokToeForm {
   @Output()
   klokGekozen: EventEmitter<Klok> = new EventEmitter<Klok>(); 
 

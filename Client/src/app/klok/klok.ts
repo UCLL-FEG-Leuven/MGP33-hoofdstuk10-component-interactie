@@ -4,10 +4,10 @@ import { Klok } from '../klok';
 @Component({
     selector: 'app-klok',
     imports: [],
-    templateUrl: './klok.component.html',
-    styleUrl: './klok.component.css'
+    templateUrl: './klok.html',
+    styleUrl: './klok.css'
 })
-export class KlokComponent implements OnInit, OnDestroy {
+export class Klok implements OnInit, OnDestroy {
   @Input()
   klok: Klok | undefined;
 

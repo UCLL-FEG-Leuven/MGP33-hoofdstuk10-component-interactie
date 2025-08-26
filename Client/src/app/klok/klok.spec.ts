@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { VoegKlokToeFormComponent } from './voeg-klok-toe-form.component';
+import { Klok } from './klok';
 
-describe('VoegKlokToeFormComponent', () => {
-  let component: VoegKlokToeFormComponent;
-  let fixture: ComponentFixture<VoegKlokToeFormComponent>;
+describe('KlokComponent', () => {
+  let component: Klok;
+  let fixture: ComponentFixture<Klok>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [VoegKlokToeFormComponent]
+      imports: [Klok]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(VoegKlokToeFormComponent);
+    fixture = TestBed.createComponent(Klok);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
