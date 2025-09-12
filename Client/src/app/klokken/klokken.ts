@@ -36,6 +36,6 @@ export class Klokken implements OnInit {
   }
 
   removeChild(klok: KlokModel) {
-    this.klokken = this.klokken.filter(kl => klok.timeZone != kl.timeZone);
+    this.klokken = this.klokken.filter(kl => klok.name != kl.name);
   }
 }
