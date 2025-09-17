@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, signal, Signal, ViewChild, WritableSignal } from '@angular/core';
+import { Component, ElementRef, OnInit, signal, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { Klok as KlokModel } from '../klok';
