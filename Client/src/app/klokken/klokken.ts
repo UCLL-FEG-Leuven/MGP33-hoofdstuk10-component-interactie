@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, signal, Signal, ViewChild, WritableSignal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { Klok as KlokModel } from '../klok';
@@ -13,7 +13,7 @@ import { VoegKlokToeForm } from '../voeg-klok-toe-form/voeg-klok-toe-form';
     styleUrl: './klokken.css'
 })
 export class Klokken implements OnInit {
-  klokken: KlokModel[] = [];
+  klokken = signal<KlokModel[]>([]);
 
   @ViewChild("nieuweKlokDialog")
   nieuweKlokDialog: ElementRef<HTMLDialogElement> | undefined;
@@ -22,7 +22,7 @@ export class Klokken implements OnInit {
     let response = await fetch('http://localhost:3010/my-clocks');
     if (response.ok) {
       let klokkenLiteralsArray = await response.json();
-      this.klokken = klokkenLiteralsArray.map((o: any) => new KlokModel(o.name, o.timeZone, o.locale));
+      this.klokken.set(klokkenLiteralsArray.map((o: any) => new KlokModel(o.name, o.timeZone, o.locale)));
     }
   }
 
@@ -31,11 +31,11 @@ export class Klokken implements OnInit {
   }
 
   voegNieuweKlokToe(nieuweKlok: KlokModel) {
-    this.klokken.push(nieuweKlok);
+    this.klokken.update(kl => [...kl, nieuweKlok]);
     this.nieuweKlokDialog?.nativeElement.close();
   }
 
   removeChild(klok: KlokModel) {
-    this.klokken = this.klokken.filter(kl => klok.name != kl.name);
+    this.klokken.update(kl => kl.filter(kl => klok.name != kl.name));
   }
 }
